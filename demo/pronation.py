@@ -1,3 +1,4 @@
+# 25.前臂迴旋
 import argparse
 import numpy as np
 import cv2
@@ -146,6 +147,7 @@ def demo():
     img_list,record_right,record_left,right_lost,left_lost, img_lost = hand_detection(cap)
     #print(len(img_list),len(record_right),len(record_left),len(right_lost),len(left_lost),len(img_lost))
 
+    # 擷取雙手大拇指的指尖, 追蹤在X軸方向上的移動軌跡. 再將指尖的關節點輸入至find_peak
     fist_closing_frame, action_time_list = find_peak(record_right,record_left)
     print("right hand action count:",len(fist_closing_frame[0]), "frequency: ",len(fist_closing_frame[0])/(len(img_list)/fps),"regularity:",np.std(np.array(action_time_list[0]))/fps)
     print("left hand action count:",len(fist_closing_frame[1]),"frequency: ",len(fist_closing_frame[1])/(len(img_list)/fps) ,"regularity:",np.std(np.array(action_time_list[1]))/fps)
