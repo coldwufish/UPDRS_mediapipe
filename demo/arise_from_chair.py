@@ -1,3 +1,4 @@
+# 27.從椅子上站起來
 import argparse
 import numpy as np
 import cv2
