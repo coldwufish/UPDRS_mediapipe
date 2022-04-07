@@ -1,4 +1,4 @@
-# 29.步態
+# 26.兩腳靈敏度測試
 import argparse
 import numpy as np
 import cv2
@@ -92,6 +92,7 @@ def demo():
 
     img_list,foot_index, lost_frame = post_detection(cap)
 
+    # 擷取左右腳腳尖在Y軸方向上的移動軌跡, 再將關節點資訊輸入至scipy的find_peak
     stmop_list, action_time_list = find_peak(foot_index)
     print(f'{args.leg} leg action count:{len(stmop_list)}, frequency:{len(stmop_list)/(len(img_list)/fps):.4f}, regularity:{np.std(np.array(action_time_list))/fps:.4f}')
     print("Write result image to ./demo_result/" + args.leg +  "leg_agility.png")
