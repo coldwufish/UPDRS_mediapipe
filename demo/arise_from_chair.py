@@ -93,6 +93,8 @@ def demo():
 
     img_list,right_shoulder, left_shoulder, lost_frame = post_detection(cap)
 
+    # 獲得肩膀關節點後, 根據畫面去設定左邊or右邊肩膀 (看哪一邊肩膀靠近鏡頭)
+    # 此關節點軌跡再輸入至scipy的findpeak進行分析
     start_frame, end_frame = find_peak(right_shoulder)
     print("Write result image to ./demo_result/arise_from_chair.png")
 
